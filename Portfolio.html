@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samir Samadov - Portfolio</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #b3e5fc, #81d4fa);
+        color: #333;
+        scroll-behavior: smooth;
+        transition: background 0.3s, color 0.3s;
+    }
+    body.dark-mode {
+        background: #121212;
+        color: #e0e0e0;
+    }
+    .navbar {
+        transition: background 0.3s;
+    }
+    .navbar.dark-mode {
+        background: #1f1f1f !important;
+    }
+    .btn-custom {
+        background-color: #0288d1;
+        color: white;
+        border-radius: 25px;
+        transition: transform 0.2s;
+    }
+    .btn-custom:hover {
+        transform: scale(1.05);
+    }
+    section {
+        padding: 60px 0;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease-out;
+    }
+    section.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .dark-toggle {
+        cursor: pointer;
+        border: none;
+        background: none;
+        font-size: 1.5rem;
+    }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#home">Samir Samadov</a>
+    <button class="dark-toggle ms-auto" id="darkModeToggle">🌙</button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Home -->
+<section id="home" class="text-center">
+  <div class="container">
+    <h1 class="fw-bold">Welcome to My Portfolio</h1>
+    <p class="lead">samir_samadov@brown.edu | samirsamadov72@gmail.com</p>
+    <p class="lead">M.S. Biotechnology | Neuroscience & Psychology Researcher | Data Science Enthusiast</p>
+  </div>
+</section>
+
+<!-- Education -->
+<section id="education">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-4">Education</h2>
+    <div>
+      <button class="btn btn-custom m-2" onclick="window.open('https://www.brown.edu/', '_blank')">Brown University</button>
+      <button class="btn btn-custom m-2" onclick="window.open('https://www.brooklyn.cuny.edu/', '_blank')">Brooklyn College</button>
+      <button class="btn btn-custom m-2" onclick="window.open('https://www.kbcc.cuny.edu/', '_blank')">Kingsborough CC</button>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-4">Projects & Tools</h2>
+    <div>
+      <button class="btn btn-custom m-2" onclick="window.open('https://sites.brown.edu/lee/', '_blank')">Alzheimer's Disease prediction at leelab.ai</button>
+      <button class="btn btn-custom m-2" onclick="window.open('https://github.com/DeepLabCut/DeepLabCut', '_blank')">DeepLabCut</button>
+      <button class="btn btn-custom m-2" onclick="window.open('https://github.com/jbohnslav/deepethogram', '_blank')">DeepEthogram</button>
+      <button class="btn btn-custom m-2" onclick="window.open('https://blast.ncbi.nlm.nih.gov/Blast.cgi', '_blank')">NCBI BLAST</button>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-4">Contact Me</h2>
+    <button class="btn btn-custom" onclick="window.location.href='mailto:samirsamadov72@gmail.com'">Email Me</button>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Dark mode toggle
+    document.getElementById('darkModeToggle').addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        document.querySelector('.navbar').classList.toggle('dark-mode');
+    });
+
+    // Scroll animations
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
+</script>
+</body>
+</html>
